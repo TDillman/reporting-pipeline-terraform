@@ -1,0 +1,60 @@
+This template will create the SQS queues, Lambda functions, IAM roles/policies, S3 buckets, and Athena
+resources for the reporting POCs to function.
+
+API credentials are in ./creds
+
+Lambda environment variables should be put in AWS Secrets Manager
+
+---------
+
+To create deployments (a $VALUE denotes a user-defined value during deployment):
+    terraform workspace new $ENVIRONMENT (e.g. dev-us, test-eu, prod-us)
+    terraform workspace select $ENVIRONMENT
+    terraform init
+    terraform plan -var "region=$REGION"
+    terraform apply -var "region=$REGION"
+        Defining the "region" variable in the command line will allow us to tag all resources that allow tags with their
+        environment.
+        
+---------
+
+The templates use the current workspace name as the environment variable, so whatever workspace is currently selected
+will dictate that workspace and have a separate state file.
+
+My recommendation would be to set up workspaces for each environment and location:
+dev-us
+dev-eu
+test-us
+test-eu
+prod-us
+prod-eu
+
+---------
+
+The templates use the current workspace name as the environment variable, so whatever workspace is currently selected
+will dictate that workspace and have a separate state file.
+
+.
+│   creds
+│   main.tf
+│   README
+│   variables.tf
+│
+├───athena_database
+│       athena.tf
+│       README
+│       variables.tf
+│
+├───lambda_functions
+│       assume_role_policy.json
+│       lambda_functions.tf
+│       lambda_policy.json
+│       lambda_scheduler_source.zip
+│       lambda_sqs_handler_source.zip
+│       README
+│       variables.tf
+│
+├───sqs_queues
+│       README
+│       sqs_queues.tf
+│       variables.tf

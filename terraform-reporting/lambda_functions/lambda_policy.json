@@ -1,0 +1,24 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "s3:PutObject",
+                "sqs:ListQueues",
+                "s3:CreateBucket",
+                "s3:ListBucket",
+                "logs:CreateLogGroup",
+                "logs:CreateLogStream",
+                "logs:PutLogEvents",
+                "kms:*",
+                "sqs:DeleteMessage",
+                "sts:AssumeRole",
+                "sqs:ReceiveMessage",
+                "sqs:SendMessage",
+                "sqs:GetQueueAttributes"
+            ],
+            "Resource": "*"
+        }
+    ]
+}

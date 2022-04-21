@@ -1,0 +1,2 @@
+This module spins up the SQS queues required for this infrastructure, as well as the output we reference
+in the Lambda module.

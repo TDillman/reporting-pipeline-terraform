@@ -1,0 +1,6 @@
+This module creates the three Lambda functions required for our Mode reporting POC, as well as their dependencies.
+IAM roles, policies, and role attachments are contained in this module.
+
+Once the Lambda functions are written, we can work out how to reference the source code in each resource.
+
+Lambda environment variables go into AWS Secrets Manager
